@@ -16,17 +16,17 @@ ntp_servers_template = template.find_objects('ntp server')
 #for ntp_server in ntp_servers:
 #  print(ntp_server.re_match_typed(regex=r'ntp server (\S+)'))
 
-ntp_array = []
-[ntp_array.append(ntp_server.text) 
+ntp_set = []
+[ntp_set.append(ntp_server.text) 
         for ntp_server in ntp_servers]
-ntp_array = set(ntp_array)
+ntp_set = set(ntp_set)
 
-ntp_array_template = []
-[ntp_array_template.append(ntp_server.text) 
+ntp_set_template = []
+[ntp_set_template.append(ntp_server.text) 
         for ntp_server in ntp_servers_template]
-ntp_array_template = set(ntp_array_template)
+ntp_set_template = set(ntp_set_template)
 
 print("In template but not in config")
-print(ntp_array_template.difference(ntp_array))
+print(ntp_set_template.difference(ntp_set))
 print("In config but not in template")
-print(ntp_array.difference(ntp_array_template))
+print(ntp_set.difference(ntp_set_template))
